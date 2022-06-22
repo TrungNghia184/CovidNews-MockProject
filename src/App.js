@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import { TestPage } from './components/testPage';
-import LoginPage from './pages/signinPage';
+import EntryPage from './pages/entryPage';
+import AlertMessage from './components/alertMessage';
 
 function App() {
   return (
     <div className="App">
-      <TestPage/>
-      <LoginPage/>
+      <EntryPage/>
     </div>
   );
 }
