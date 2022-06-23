@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ionic/pwa-elements": "^3.1.1",
+    "@ionic/react": "^6.1.10",
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

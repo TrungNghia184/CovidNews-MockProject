@@ -10,6 +10,7 @@ window.toastController = toastController;
 export default function SignIn(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   function handlePasswordChange(e) {
     setPassword(e.target.value);
     console.log(password);
@@ -30,7 +31,7 @@ export default function SignIn(props) {
     if (matchedUser.length > 0) {
       localStorage.setItem("token", true);
       console.log(localStorage.getItem("token"));
-      //   navigate('/')
+        navigate('/')
     } else {
       showAlert();
     }
@@ -48,7 +49,7 @@ export default function SignIn(props) {
     await toast.present();
   }
   return (
-    <form onSubmit={props.checkAuthentication}>
+    <form onSubmit={checkAuthentication}>
       <h1>Sign-in</h1>
       <label className="label" for="username">
         Username

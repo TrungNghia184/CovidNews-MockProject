@@ -24,7 +24,7 @@ export default function EntryPage() {
           <button onClick={setSignUp}>Sign Up</button>
         </div>
       </div>
-      {(signInOrSignUp === 'signIn') ? <SignIn /> : <SignUp />}
+      {(signInOrSignUp === 'signIn') ? <SignIn /> : <SignUp currentPage={setSignInOrSignUp} />}
     </div>
   );
 }

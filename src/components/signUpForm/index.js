@@ -9,8 +9,8 @@ import {
 import { toastController } from "https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js";
 import "./index.scss"
 window.toastController = toastController;
-export default function SignUp() {
-  // const navigate = useNavigate();
+export default function SignUp(props) {
+  const navigate = useNavigate();
   const [usersList, setUsersList] = useState([{
     username: 'admin',
     password: 'admin',
@@ -61,7 +61,7 @@ export default function SignUp() {
           showAlert('success', 'Register successfully')
           console.log(usersList)
           setTimeout(() => {
-            // navigate('/login')
+            props.currentPage('signIn');
           }, 2000);
         }
       }
