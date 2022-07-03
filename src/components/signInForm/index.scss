@@ -1,6 +1,6 @@
 form {
     width: 50%;
-    height: 70vh;
+    height: 100%;
     background-color: #d2e6e927;
     border-radius: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.405);
@@ -37,7 +37,7 @@ form {
         margin: 60px auto;
         width: 200px;
         height: 60px;
-        position: relative;
+
         left: calc(50% - 100px);
         background-color: rgba(125, 157, 247, 0.756);
         border-radius: 15px;

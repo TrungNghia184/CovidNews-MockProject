@@ -5,38 +5,53 @@ import {
   useNavigate,
   NavLink,
 } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import EntryPage from "./pages/entryPage";
 import HomePage from "./pages/homePage";
 import AuthRoute from "./components/authRoute";
 import PrivateRoute from "./components/privateRouth";
 import NavBar from "./components/navBar";
-
+import NewsPage from "./pages/newsPage";
+import "./App.scss";
 function App() {
+  const [screenSize, setScreenSize] = useState(1680);
+  function getScreenSize() {
+    setScreenSize(window.screen.width);
+  }
+  useEffect(() => {
+    getScreenSize();
+    window.addEventListener("resize", getScreenSize);
+    return () => {
+      window.removeEventListener("resize", getScreenSize);
+    };
+  }, []);
   return (
-    <div className="App">
-      {/* <EntryPage /> */}
-      <NavBar/>
-      <Routes>
-        <Route
-          exact
-          path="/login"
-          element={
-            <AuthRoute>
-              <EntryPage />
-            </AuthRoute>
-          }
-        />
-        <Route
-          exact
-          path="/"
-          element={
-            <PrivateRoute>
-              <HomePage restricted={false}/>
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </div>
+    <ion-app>
+      <ion-content fullscreen>
+        <NavBar/>
+        <Routes>
+          <Route
+            exact
+            path="/login"
+            element={
+              <AuthRoute>
+                <EntryPage />
+              </AuthRoute>
+            }
+          />
+          <Route
+            exact
+            path="/"
+            element={
+              <PrivateRoute>
+                <HomePage restricted={false} />
+              </PrivateRoute>
+            }
+          />
+          <Route exact path="/news" element={<NewsPage />} />
+        </Routes>
+      </ion-content>
+    </ion-app>
   );
 }
 

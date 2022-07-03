@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
-    BrowserRouter as Router,
-    Navigate,
-    useNavigate,
-  } from "react-router-dom";
+  BrowserRouter as Router,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import { toastController } from "https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js";
-import "./index.scss"
+import "./index.scss";
 window.toastController = toastController;
 export default function SignIn(props) {
   const [username, setUsername] = useState("");
@@ -31,7 +31,7 @@ export default function SignIn(props) {
     if (matchedUser.length > 0) {
       localStorage.setItem("token", true);
       console.log(localStorage.getItem("token"));
-        navigate('/')
+      navigate("/");
     } else {
       showAlert();
     }
@@ -43,7 +43,7 @@ export default function SignIn(props) {
       duration: 2000,
       message: "Wrong username or password",
       showCloseButton: true,
-      position: "top",
+      position: "bottom",
     });
 
     await toast.present();
@@ -71,9 +71,11 @@ export default function SignIn(props) {
         onChange={handlePasswordChange}
         required
       />
-      <button type="submit" className="button">
-        Login
-      </button>
+      <div className="button-container">
+        <button className="button" type="submit">
+          Login
+        </button>
+      </div>
     </form>
   );
 }

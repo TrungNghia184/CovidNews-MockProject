@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import App from './App';
-import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 defineCustomElements(window)

@@ -1,17 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Poppins:wght@200&display=swap');
 
-.navbar-container {
-    height: fit-content;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #242E52;
-}
 .navbar {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    &__links{
-        color: white;
+    height: fit-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #122158;
+    &__links {
+        color: rgb(188, 12, 12);
         margin-left: 1vw;
         font-family: 'Poppins', sans-serif;
         font-size: 30px;
@@ -23,5 +21,22 @@
         font-size: 30px;
         font-family: 'Poppins', sans-serif;
         border-radius: 5px;
+    }
+    ion-menu {
+        ion-header {
+            background-color: aqua;
+        }
+        ion-content {
+            ion-list {
+                background-color: aquamarine;
+                ion-item {
+                    .navbar__links {
+                        font-size: 20px;
+                        display: flex;
+                        color: greenyellow;
+                    }
+                }
+            }
+        }
     }
 }
