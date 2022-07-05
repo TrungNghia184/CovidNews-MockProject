@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Poppins:wght@200&display=swap');
-
 .navbar {
     display: flex;
     flex-wrap: wrap;
@@ -7,13 +6,17 @@
     height: fit-content;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #122158;
+    position: absolute;
+    // background-image: url("https://img.freepik.com/free-vector/painted-background-multicoloured-palette_23-2148427592.jpg?w=2000");
+    // background-position: -95px 0px;
     &__links {
-        color: rgb(188, 12, 12);
+        color: rgb(255, 255, 255);
         margin-left: 1vw;
         font-family: 'Poppins', sans-serif;
         font-size: 30px;
+        text-decoration: none;
     }
+
     button {
         background: none;
         border: none;
@@ -22,21 +25,58 @@
         font-family: 'Poppins', sans-serif;
         border-radius: 5px;
     }
+
     ion-menu {
-        ion-header {
-            background-color: aqua;
-        }
         ion-content {
             ion-list {
-                background-color: aquamarine;
+                background-color: rgb(253, 100, 100);
                 ion-item {
                     .navbar__links {
-                        font-size: 20px;
+                        font-size: 30px;
+                        padding: 20px 0px;
                         display: flex;
-                        color: greenyellow;
+                        color: rgb(0, 0, 0);
                     }
                 }
             }
         }
+
+        ion-header {
+            ion-toolbar {
+                ion-text {
+                    font-size: 30px;
+                    margin-left: 20px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+#main-content {
+    ion-header {
+        ion-toolbar {
+            ion-button {
+                color: rgb(255, 255, 255);
+            }
+            ion-text {
+                font-size: 25px;
+                margin-left: 20px;
+                color: white;
+            }
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+    .navbar {
+        color: red;
+        width: 100%;
+        height: 100%;
+        z-index: none;
+    }
+}
+@media screen and (min-width: 768px) {
+    .navbar {
+        z-index: 1;
     }
 }

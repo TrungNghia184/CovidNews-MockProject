@@ -13,37 +13,56 @@ export default function NavBar() {
   async function openMenu() {
     await menuController.open();
   }
-  function onLogout() {
+  async function onLogout() {
     localStorage.setItem("token", false);
     navigate("/login");
+    await menuController.close();
+  }
+  async function closeMenu() {
+    await menuController.close();
   }
   return (
     <nav className="navbar">
       {window.screen.width < 768 ? (
         <>
           <ion-menu side="start" content-id="main-content">
-            <ion-header color="tertiary">
-              <ion-toolbar color="tertiary" translucent>
-                <ion-title>Menu</ion-title>
+            <ion-header>
+              <ion-toolbar color="primary" translucent>
+                <ion-text color="white">Menu</ion-text>
               </ion-toolbar>
             </ion-header>
-            <ion-content color="tertiary">
+            <ion-content color="primary">
               <ion-list color="secondary">
                 <ion-item>
-                  <NavLink className="navbar__links" to="/" end>
-                    <ion-icon name="mail" slot="start"></ion-icon>
+                  <NavLink
+                    className="navbar__links"
+                    to="/"
+                    onClick={closeMenu}
+                    end
+                  >
+                    <ion-icon name="home" slot="start"></ion-icon>
                     <ion-label>Home</ion-label>
                   </NavLink>
                 </ion-item>
                 <ion-item>
-                  <NavLink className="navbar__links" to="/news" end>
-                    <ion-icon name="paper-plane" slot="start"></ion-icon>
+                  <NavLink
+                    className="navbar__links"
+                    to="/news"
+                    onClick={closeMenu}
+                    end
+                  >
+                    <ion-icon name="newspaper-outline"></ion-icon>
                     <ion-label>News</ion-label>
                   </NavLink>
                 </ion-item>
                 <ion-item>
-                  <NavLink className="navbar__links" to="/login" end>
-                    <ion-icon name="heart" slot="start"></ion-icon>
+                  <NavLink
+                    className="navbar__links"
+                    to="/login"
+                    onClick={closeMenu}
+                    end
+                  >
+                    <ion-icon name="log-in-outline"></ion-icon>
                     <ion-label>Sign In/Sign Up</ion-label>
                   </NavLink>
                 </ion-item>
@@ -61,10 +80,10 @@ export default function NavBar() {
           <div class="ion-page" id="main-content">
             <ion-header>
               <ion-toolbar color="primary">
-                <ion-buttons slot="start">
+                <ion-buttons slot="start" color="dark">
                   <ion-menu-button></ion-menu-button>
                 </ion-buttons>
-                <ion-title>Menu</ion-title>
+                <ion-text color="white">Menu</ion-text>
               </ion-toolbar>
             </ion-header>
           </div>

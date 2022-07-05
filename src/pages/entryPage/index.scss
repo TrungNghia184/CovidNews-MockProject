@@ -1,118 +1,461 @@
-.login-container {
-    border: 1px solid white;
-    margin: 0vh auto 0px auto;
-    color: rgb(17, 160, 112);
-    width: 100%;
-    height: 100vh;
-    font-size: 20px;
+
+.formContainer {
+    width: 90%;
+    height: 70%;
+    border: none;
+    border-radius: 15px;
+    margin: auto auto;
+    margin-top: 12vh;
     display: flex;
-    flex-wrap: wrap;
-    background-image: linear-gradient(180deg, rgb(234, 234, 247), rgba(9, 140, 210, 0.949));
-    justify-content: center;
-    align-items: center;
-    .button-container {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-    }
-    button {
-        width: 150px;
-        height: 80px;
-        font-size: 30px;
-        color: rgb(1, 205, 137);
-        border-radius: 15px;
-        border: 1px solid white;
-        background-color: rgba(214, 235, 242, 0.842);
-    }
-    button:hover {
-        background-color: azure;
-        animation: glowing 5s linear;
-    }
-    @keyframes glowing {
-        0% {
-            box-sizing: border-box;
-            box-shadow: 0px 0px 50px 5px #cfe6f4;
-            background-color: rgb(153, 243, 243);
-        }
-        100% {
-            background-position: 0 0;
-        }
-    }
-    form {
-        button {
-            text-align: center;
-        }
-        button:hover {
-            background-color: azure;
-            animation: glowing 5s linear;
-        }
-    }
-    .signin-button {
-        background-color: rgb(116, 240, 240);
-        color: black;
-    }
-    .signup-button {
-        background-color: rgb(116, 240, 240);
-        color: black;
-    }
-    .welcome-container {
-        width: 50%;
-        height: 100vh;
+    background-color: white;
+    &__welcome {
+        flex: 1 1 40%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        .navigation-buttons {
-            display: flex;
-            flex-direction: column;
-            row-gap: 30px;
-        }
-        .welcome-message {
-            height: 65%;
-            p {
-                font-size: 70px;
-                display: inline-block;
+        position: relative;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        background-image: url('https://img.freepik.com/free-vector/abstract-watercolor-green-background_23-2149040581.jpg?w=2000');
+        &--content {
+            text-align: center;
+            width: 100%;
+            .nav-button {
+                width: 50%;
+                height: 80px;
                 color: white;
-                margin: 0px 0px 0px 20px;
+                font-size: 30px;
+                border: 1px solid white;
+                border-radius: 50px;
+                background: none;
+                margin-top: 56%;
             }
-            .welcome-title {
-                color: black;
-                margin: 0px 0px 0px 20px;
-            }
-            .page-missions {
-                font-size: 20px;
-                color: rgb(74, 81, 79);
-                padding: 30px 100px 30px 0px;
-            }
+        }
+    }
+
+    form {
+        flex: 1 1 60%;
+        position: relative;
+        background-color: white;
+        border: none;
+        border-radius: 0px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
+
+.toRight {
+    .formContainer__welcome {
+        animation: welcomeRight 1s linear;
+        animation-fill-mode: forwards;
+        z-index: 2;
+    }
+    .absolute-welcome-left {
+        animation: ninjaSmokeReversed 1s linear;
+        animation-fill-mode: forwards;
+    }
+    .absolute-welcome-right {
+        animation: ninjaSmoke 1s linear;
+        animation-fill-mode: forwards;
+    }
+    form {
+        animation: formLeft 1s linear;
+        animation-fill-mode: forwards;
+    }
+}
+
+.toLeft {
+    .formContainer__welcome {
+        animation: welcomeLeft 1s linear;
+        animation-fill-mode: forwards;
+        z-index: 2;
+    }
+    .absolute-welcome-left {
+        animation: ninjaSmoke 1s linear;
+        animation-fill-mode: forwards;
+    }
+    .absolute-welcome-right {
+        animation: ninjaSmokeReversed 1s linear;
+        animation-fill-mode: forwards;
+    }
+    form {
+        animation: formRight 1s linear;
+        animation-fill-mode: forwards;
+    }
+}
+
+@keyframes welcomeRight {
+    0% {
+        left: 0%;
+        background-position: 0% 0%;
+    }
+    25% {
+        left: 15%;
+        flex: 1 1 55%;
+        background-position: 25% 0%;
+        border-radius: 0px;
+    }
+    50% {
+        left: 30%;
+        flex: 1 1 70%;
+        background-position: 50% 0%;
+        border-radius: 0px;
+    }
+    75% {
+        left: 45%;
+        background-position: 75% 0%;
+        flex: 1 1 50%;
+        border-radius: 0px;
+    }
+    100% {
+        left: 60%;
+        background-position: 100% 0%;
+        border-radius: 0px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
+@keyframes welcomeLeft {
+    0% {
+        left: 60%;
+        background-position: 100% 0%;
+        border-radius: 0px;
+    }
+    25% {
+        left: 45%;
+        background-position: 75% 0%;
+        flex: 1 1 55%;
+        border-radius: 0px;
+    }
+    50% {
+        left: 30%;
+        background-position: 50% 0%;
+        flex: 1 1 70%;
+        border-radius: 0px;
+    }
+    75% {
+        left: 15%;
+        background-position: 25% 0%;
+        flex: 1 1 55%;
+        border-radius: 0px;
+    }
+    100% {
+        left: 0%;
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes formLeft {
+    0% {
+        right: 0%;
+    }
+    25% {
+        right: 10%;
+        border-radius: 0px;
+    }
+    50% {
+        right: 20%;
+    }
+    75% {
+        right: 30%;
+    }
+    100% {
+        right: 40%;
+        border-radius: 0px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        
+    }
+}
+@keyframes formRight {
+    0% {
+        right: 40%;
+        border-radius: 0px;
+    }
+    25% {
+        right: 30%;
+        border-radius: 0px;
+    }
+    50% {
+        right: 20%;
+    }
+    75% {
+        right: 10%;
+    }
+    100% {
+        right: 0%;
+        border-radius: 0px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+}
+@keyframes ninjaSmoke {
+    0% {
+        z-index: 0;
+        visibility: hidden;
+    }
+    30% {
+        z-index: 3;
+        visibility: hidden;
+    }
+    100% {
+        z-index: 3;
+    }
+}
+@keyframes ninjaSmokeReversed {
+    0% {
+        z-index: 0;
+        visibility: hidden;
+    }
+    95% {
+        z-index: 0;
+        visibility: hidden;
+    }
+    100% {
+        z-index: 0;
+        visibility: hidden;
+    }
+}
+.absolute-welcome-left {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    font-size: 15px;
+    width: 35%;
+    top: 30%;
+    text-align: center;
+    padding: 0 5vw;
+    h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+.absolute-welcome-right {
+    position: absolute;
+    z-index: 0;
+    color: white;
+    font-size: 15px;
+    width: 35%;
+    left: 60%;
+    top: 30%;
+    text-align: center;
+    padding: 0 5vw;
+    h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+}
+@media screen and (min-width: 1025px) {
+    .formContainer {
+        width: 70%;
+    }
+    .absolute-welcome-left {
+        width: 30%;
+        padding: 0 5vw 0 3vw;
+        font-size: 23px;
+        h1 {
+            font-size: 35px;
+            font-weight: 800;
+        }
+    }
+    .absolute-welcome-right {
+        width: 30%;
+        padding: 0px;
+        padding-right: 8vw;
+        font-size: 23px;
+        h1 {
+            font-size: 35px;
+            font-weight: 800;
         }
     }
 }
-@media screen and (max-width: 768px) {
-    .login-container {
+@media screen and (max-width: 767px) {
+    .formContainer {
+        color: white;
+        z-index: 2;
+        height: 50%;
+        .absolute-welcome-left {
+            display: none;
+        }
+        .absolute-welcome-right {
+            display: none;
+        }
+        h1 {
+            margin-top: 10vh;
+            color: whitesmoke;
+        }
+        &__welcome {
+            flex: 1 1 0%;
+            &--content {
+                position: absolute;
+                width: 0px;
+                text-align: center;
+                .nav-button {
+                    width: 200px;
+                    position: absolute;
+                    height: 80px;
+                    color: white;
+                    z-index: 1;
+                    border-radius: 8px;
+                    bottom: 20vh;
+                    right: -190px;
+                    border: none;
+                    background-color: rgba(46, 195, 168, 0.422);
+                }
+                .nav-button:focus {
+                    bottom: 19vh;
+                    background-color: rgba(42, 190, 175, 0.72);
+                }
+            }
+        }
         form {
-            width: 100%;
-            height: 85%;
-        }
-        .signin-button {
-            font-size: small;
-            height: 50px;
-            width: 20%;
-            transform: translate(-14vw, 3.2vh);
-        }
-        .signup-button {
-            font-size: small;
-            height: 50px;
-            width: 20%;
-            transform: translate(-13vw, 3.2vh);
+            flex: 1 1 100%;
+            position: relative;
+            border-radius: 15px;
+            background-image: url('https://img.freepik.com/free-vector/abstract-watercolor-green-background_23-2149040581.jpg?w=2000');
         }
     }
-  }
-  @media screen and (min-width: 769px) {
-    .login-container {
-        .signin-button {
-            transform: translate(100%, 0);
+    .toRight {
+        .formContainer__welcome {
+            animation: none;
+            z-index: 2;
         }
-        .signup-button {
-            transform: translate(100%, 0);
-        }   
+        .absolute-welcome-left {
+            animation: none;
+        }
+        .absolute-welcome-right {
+            animation: none;
+        }
+        form {
+            animation: none;
+        }
     }
-  }
+    
+    .toLeft {
+        .formContainer__welcome {
+            animation: none;
+            z-index: 1;
+        }
+        .absolute-welcome-left {
+            animation: none;
+        }
+        .absolute-welcome-right {
+            animation: none;
+        }
+        form {
+            animation: none;
+        }
+    }
+}
+// .login-container {
+//     border: 1px solid white;
+//     margin: 0vh auto 0px auto;
+//     color: rgb(0, 0, 0);
+//     width: 100%;
+//     height: max-content;
+//     font-size: 20px;
+//     display: flex;
+//     flex-wrap: wrap;
+//     background-image: linear-gradient(180deg, #ffffff, rgba(228, 224, 224, 0.604));
+//     justify-content: flex-start;
+//     align-items: flex-start;
+
+//     .button-container {
+//         display: flex;
+//         width: 100%;
+//         justify-content: center;
+//         .nav-button {
+//             width: 150px;
+//             height: 80px;
+//             font-size: 30px;
+//             color: rgb(0, 0, 0);
+//             border: 2px solid rgb(0, 0, 0);
+//         }
+
+//         .nav-button:hover {
+//             background-color: rgba(255, 99, 99, 0.729);
+//         }
+
+//         .nav-buttonn:focus {
+//             background-color: #ec3333;
+//             border: none;
+//             color: white;
+//             font-weight: 700;
+//         }
+//     }
+//     .welcome-container {
+//         width: 50%;
+//         height: 100vh;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+
+//         .navigation-buttons {
+//             display: flex;
+//             flex-direction: column;
+//             row-gap: 30px;
+//         }
+
+//         .welcome-message {
+//             height: 65%;
+
+//             p {
+//                 font-size: 70px;
+//                 display: inline-block;
+//                 color: white;
+//                 margin: 0px 0px 0px 20px;
+//             }
+
+//             .welcome-title {
+//                 color: black;
+//                 margin: 0px 0px 0px 20px;
+//             }
+
+//             .page-missions {
+//                 font-size: 20px;
+//                 color: rgb(74, 81, 79);
+//                 padding: 30px 100px 30px 0px;
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 768px) {
+//     .login-container {
+//         form {
+//             width: 95%;
+//             margin: 8vh auto;
+//             button {
+//                 display: block;
+//                 position: relative;
+//             }
+//         }
+//         .button-container {
+//             .signin-button {
+//                 font-size: small;
+//                 height: 50px;
+//                 width: 20%;
+//                 transform: translate(-14vw, 5vh);
+//             }
+
+//             .signup-button {
+//                 font-size: small;
+//                 height: 50px;
+//                 width: 20%;
+//                 transform: translate(-13vw, 5vh);
+//             }
+//         }
+
+//     }
+// }
+
+// @media screen and (min-width: 769px) {
+//     .login-container {
+//         .signin-button {
+//             transform: translate(100%, 0);
+//         }
+
+//         .signup-button {
+//             transform: translate(100%, 0);
+//         }
+//     }
+// }

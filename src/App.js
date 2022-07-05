@@ -28,14 +28,16 @@ function App() {
   return (
     <ion-app>
       <ion-content fullscreen>
-        <NavBar/>
+        <NavBar />
         <Routes>
           <Route
             exact
             path="/login"
             element={
               <AuthRoute>
-                <EntryPage />
+                <div className="container">
+                  <EntryPage />
+                </div>
               </AuthRoute>
             }
           />
