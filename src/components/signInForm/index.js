@@ -4,20 +4,22 @@ import {
   Navigate,
   useNavigate,
 } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { toastController } from "https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js";
 import "./index.scss";
+import "../../i18n"
+
 window.toastController = toastController;
 export default function SignIn(props) {
+  const { t } = useTranslation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   function handlePasswordChange(e) {
     setPassword(e.target.value);
-    console.log(password);
   }
   function handleUserNameChange(e) {
     setUsername(e.target.value);
-    console.log(username);
   }
   function checkAuthentication(e) {
     e.preventDefault();
@@ -35,7 +37,6 @@ export default function SignIn(props) {
     } else {
       showAlert();
     }
-    console.log(matchedUser);
   }
   async function showAlert() {
     const toast = await toastController.create({
@@ -45,14 +46,13 @@ export default function SignIn(props) {
       showCloseButton: true,
       position: "bottom",
     });
-
     await toast.present();
   }
   return (
     <form onSubmit={checkAuthentication}>
-      <h1>Sign-in</h1>
+      <h1>{t('signIn')}</h1>
       <label className="label" for="username">
-        Username
+        {t('username')}
       </label>
       <input
         className="input"
@@ -62,7 +62,7 @@ export default function SignIn(props) {
         required
       />
       <label className="label" for="password">
-        Password
+        {t('password')}
       </label>
       <input
         className="input"
@@ -73,7 +73,7 @@ export default function SignIn(props) {
       />
       <div className="button-container">
         <button className="button" type="submit">
-          Login
+          {t('login')}
         </button>
       </div>
     </form>

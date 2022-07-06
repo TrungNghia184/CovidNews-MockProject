@@ -8,8 +8,12 @@ import {
 } from "react-router-dom";
 import { toastController } from "https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js";
 import "./index.scss";
+import "../../i18n"
+import { useTranslation } from "react-i18next";
 window.toastController = toastController;
+
 export default function SignUp(props) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [usersList, setUsersList] = useState([
     {
@@ -41,7 +45,7 @@ export default function SignUp(props) {
           /^[a-z]+$/,
           "Your username must only contains lowercase letters"
         )
-        .required(),
+        .required('Username is a required field'),
       password: Yup.string()
         .min(3, "Password must have more than 2 characters!")
         .max(15, "Password must have less than 16 characters!")
@@ -82,9 +86,9 @@ export default function SignUp(props) {
   }, [usersList]);
   return (
     <form onSubmit={formik.handleSubmit} className="form">
-      <h1>Register</h1>
+      <h1>{t('register')}</h1>
       <div className="form-inputs">
-        <label for="name">Username</label>
+        <label for="name">{t('username')}</label>
         <input
           type="text"
           name="name"
@@ -103,7 +107,7 @@ export default function SignUp(props) {
         )}
       </div>
       <div className="form-inputs">
-        <label for="password">Password</label>
+        <label for="password">{t('password')}</label>
         <input
           type="password"
           name="password"
@@ -123,7 +127,7 @@ export default function SignUp(props) {
       </div>
       <div className="button-container">
         <button className="button" type="submit">
-          Submit
+          {t('signUp')}
         </button>
       </div>
     </form>

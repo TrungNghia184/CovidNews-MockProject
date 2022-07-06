@@ -1,15 +1,31 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonSegment,
+  IonSegmentButton,
+  IonLabel,
+  IonIcon,
+} from "@ionic/react";
 import {
   BrowserRouter as Router,
   NavLink,
   useNavigate,
 } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { setLanguage } from "../../redux/slices/globalSlices";
 import { menuController } from "https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js";
 import "./index.scss";
+import "../../i18n";
 window.menuController = menuController;
 export default function NavBar() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   async function openMenu() {
     await menuController.open();
   }
@@ -20,6 +36,9 @@ export default function NavBar() {
   }
   async function closeMenu() {
     await menuController.close();
+  }
+  function changeLanguage(e) {
+    dispatch(setLanguage(e.target.value));
   }
   return (
     <nav className="navbar">
@@ -41,7 +60,7 @@ export default function NavBar() {
                     end
                   >
                     <ion-icon name="home" slot="start"></ion-icon>
-                    <ion-label>Home</ion-label>
+                    <ion-label>{t("home")}</ion-label>
                   </NavLink>
                 </ion-item>
                 <ion-item>
@@ -52,7 +71,7 @@ export default function NavBar() {
                     end
                   >
                     <ion-icon name="newspaper-outline"></ion-icon>
-                    <ion-label>News</ion-label>
+                    <ion-label>{t("news")}</ion-label>
                   </NavLink>
                 </ion-item>
                 <ion-item>
@@ -63,14 +82,16 @@ export default function NavBar() {
                     end
                   >
                     <ion-icon name="log-in-outline"></ion-icon>
-                    <ion-label>Sign In/Sign Up</ion-label>
+                    <ion-label>{t("Login")}</ion-label>
                   </NavLink>
                 </ion-item>
                 {localStorage.getItem("token") === "true" ? (
-                  <button onClick={onLogout}>
-                    <ion-icon name="heart" slot="start"></ion-icon>
-                    <ion-label>Logout</ion-label>
-                  </button>
+                  <ion-item>
+                    <button onClick={onLogout}>
+                      <ion-icon name="log-out-outline"></ion-icon>
+                      <ion-label>{t("logout")}</ion-label>
+                    </button>
+                  </ion-item>
                 ) : (
                   <></>
                 )}{" "}
@@ -91,19 +112,27 @@ export default function NavBar() {
       ) : (
         <>
           <NavLink className="navbar__links" to="/" end>
-            Home
+            {t("home")}
           </NavLink>
           <NavLink className="navbar__links" to="/news" end>
-            News
+            {t("news")}
           </NavLink>
           <NavLink className="navbar__links" to="/login" end>
-            Sign In/ Sign Up
+            {t("login")}
           </NavLink>
           {localStorage.getItem("token") === "true" ? (
-            <button onClick={onLogout}>Logout</button>
+            <button onClick={onLogout}>{t("logout")}</button>
           ) : (
             <></>
-          )}{" "}
+          )}
+          <IonSegment class="ion-segment" onIonChange={changeLanguage}>
+            <IonSegmentButton value="en">
+              <ion-text>Eng</ion-text>
+            </IonSegmentButton>
+            <IonSegmentButton value="vie">
+              <ion-text>Vie</ion-text>
+            </IonSegmentButton>
+          </IonSegment>
         </>
       )}
       {/* <NavLink className="navbar__links" to="/" end>

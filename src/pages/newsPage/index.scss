@@ -1,0 +1,81 @@
+.newsContainer {
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    margin-top: 10vh;
+    position: absolute;
+    top: -3.5vh;
+    background-image: url("https://img.freepik.com/free-vector/painted-background-multicoloured-palette_23-2148427592.jpg?w=2000");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .swiper {
+        width: 100%;
+        height: 40vh;
+        margin-top: 5%;
+        border-radius: 10px;
+        .swiper-slide {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            row-gap: 0;
+
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            h3 {
+                margin: 0px;
+                padding: 0px 10px;
+                text-align: center;
+                color: white;
+                background-color: rgba(109, 109, 109, 0.727);
+                border-radius: 5px;
+            }
+            h4 {
+                margin: 0px;
+                color: white;
+                background-color: rgba(109, 109, 109, 0.727);
+                border-radius: 50px;
+                padding: 5px 5px;
+                position: relative;
+                bottom: 10%;
+            }
+            p {
+                margin: 0px 0px 30px 0px;
+                padding: 0 10px;
+                color: white;
+                position: relative;
+                top: 10px;
+                background-color: rgba(109, 109, 109, 0.727);
+                max-height: 50px;
+                overflow: scroll;
+            }
+        }
+        .swiper-button-next {
+            color: white;
+        }
+
+        .swiper-button-prev {
+            color: white;
+        }
+    }
+    .related-news-container {
+        width: 80%;
+        margin: 20px auto;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        box-shadow: 1px 5px 15px 5px #cbcbcb;
+        a {
+            text-decoration: none;
+            .related-news {
+                padding-top: 5px;
+                border-bottom: 1px solid white; 
+                color: white;
+            }
+            .related-news:hover {
+                position: relative;
+                top: 5px;
+                left: 5px;
+            }
+        }
+    }
+}

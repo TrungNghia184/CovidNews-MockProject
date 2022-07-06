@@ -1,6 +1,9 @@
+import { toastController } from "@ionic/core";
 import React, { useEffect, useState } from "react";
-import NavBar from "../../components/navBar";
+import { useTranslation } from "react-i18next";
+import "./index.scss";
 export default function HomePage() {
+  const { t } = useTranslation(["home"]);
   async function getTotalData() {
     const rawTotalData = await fetch(
       "https://disease.sh/v3/covid-19/all "
@@ -12,6 +15,8 @@ export default function HomePage() {
     getTotalData()
   }, []);
   return (
-      <h1 className="text-3xl font-bold underline bg-red-500" >CovidGlobal</h1>
+      <div id="homePage">
+        {t("home")}
+      </div>
   );
 }

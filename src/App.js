@@ -5,14 +5,17 @@ import {
   useNavigate,
   NavLink,
 } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import EntryPage from "./pages/entryPage";
 import HomePage from "./pages/homePage";
 import AuthRoute from "./components/authRoute";
 import PrivateRoute from "./components/privateRouth";
 import NavBar from "./components/navBar";
 import NewsPage from "./pages/newsPage";
+import { useTranslation } from "react-i18next";
+import "./i18n.js"
 import "./App.scss";
+import { loadingController } from "@ionic/core";
 function App() {
   const [screenSize, setScreenSize] = useState(1680);
   function getScreenSize() {
@@ -26,34 +29,36 @@ function App() {
     };
   }, []);
   return (
-    <ion-app>
-      <ion-content fullscreen>
-        <NavBar />
-        <Routes>
-          <Route
-            exact
-            path="/login"
-            element={
-              <AuthRoute>
-                <div className="container">
-                  <EntryPage />
-                </div>
-              </AuthRoute>
-            }
-          />
-          <Route
-            exact
-            path="/"
-            element={
-              <PrivateRoute>
-                <HomePage restricted={false} />
-              </PrivateRoute>
-            }
-          />
-          <Route exact path="/news" element={<NewsPage />} />
-        </Routes>
-      </ion-content>
-    </ion-app>
+    <Suspense fallback="Loading...">
+      <ion-app>
+        <ion-content fullscreen>
+          <NavBar />
+          <Routes>
+            <Route
+              exact
+              path="/login"
+              element={
+                <AuthRoute>
+                  <div className="container">
+                    <EntryPage />
+                  </div>
+                </AuthRoute>
+              }
+            />
+            <Route
+              exact
+              path="/"
+              element={
+                <PrivateRoute>
+                  <HomePage restricted={false} />
+                </PrivateRoute>
+              }
+            />
+            <Route exact path="/news" element={<NewsPage />} />
+          </Routes>
+        </ion-content>
+      </ion-app>
+    </Suspense>
   );
 }
 

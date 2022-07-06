@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
 import SignIn from "../../components/signInForm";
 import SignUp from "../../components/signUpForm";
 import "./index.scss";
+import "../../i18n"
+
 export default function EntryPage() {
+  const { t } = useTranslation();
   const [signInOrSignUp, setSignInOrSignUp] = useState("signUp");
+  const [language, setLanguage] = useState("en");
+  const selectedLanguage = useSelector((state) => state.global.language);
   function setSignIn() {
     setSignInOrSignUp("signIn");
     let selectedDOM = document.getElementById("welcome-form");
@@ -16,48 +24,56 @@ export default function EntryPage() {
     selectedDOM.classList.remove("toRight");
     selectedDOM.classList.add("toLeft");
   }
+  useEffect(() => {
+    setLanguage(selectedLanguage);
+    i18n.changeLanguage(selectedLanguage);
+  }, [selectedLanguage]);
   return (
-    <div className="formContainer" id="welcome-form">
-      <div className="absolute-welcome-left">
-        <h1>Welcome to CovidGlobal</h1>
-        <p>Please sign up so you can see the work of our data analysist team</p>
-      </div>
-      <div className="absolute-welcome-right">
-        <h1>Welcome back to CovidGlobal</h1>
-        <p>Please sign in to continue getting the latest Covid infomation</p>
-      </div>
-      <div className="formContainer__welcome">
-        <div className="formContainer__welcome--content">
-          {signInOrSignUp === "signIn" ? (
-            <>
-              <button className="nav-button signup-button" onClick={setSignUp}>
-                Sign Up
-              </button>
-            </>
-          ) : (
-            <>
-              <button className="nav-button signin-button" onClick={setSignIn}>
-                Sign In
-              </button>
-            </>
-          )}
+    <Suspense fallback="Loading...">
+      <div className="formContainer" id="welcome-form">
+        <div className="absolute-welcome-left">
+          <h1>{t("welcomeTo")}</h1>
+          <p>
+            {t('welcomeSignUp')}
+          </p>
         </div>
+        <div className="absolute-welcome-right">
+          <h1>{t('welcomeBack')}</h1>
+          <p>{t('welcomeSignIn')}</p>
+        </div>
+        <div className="formContainer__welcome">
+          <div className="formContainer__welcome--content">
+            {signInOrSignUp === "signIn" ? (
+              <>
+                <button
+                  className="nav-button signup-button"
+                  onClick={setSignUp}
+                >
+                  {t('signUp')}
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className="nav-button signin-button"
+                  onClick={setSignIn}
+                >
+                  {t('signIn')}
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+        {signInOrSignUp === "signIn" ? (
+          <SignIn />
+        ) : (
+          <SignUp currentPage={setSignInOrSignUp} />
+        )}
       </div>
-      {signInOrSignUp === "signIn" ? (
-        <SignIn />
-      ) : (
-        <SignUp currentPage={setSignInOrSignUp} />
-      )}
-    </div>
+    </Suspense>
   );
 }
 
-const clickedButtonStyle = {
-  backgroundColor: "#ec3333",
-  color: "white",
-  fontWeight: "700",
-  border: "none",
-};
 {
   /* <div className="button-container">
         <button

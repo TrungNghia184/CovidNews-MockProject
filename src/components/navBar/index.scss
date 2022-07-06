@@ -1,26 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Poppins:wght@200&display=swap');
+
 .navbar {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content:left;
     height: fit-content;
-    padding-top: 10px;
-    padding-bottom: 10px;
     position: absolute;
+    background-color: rgba(106, 255, 223, 0.739);
+    margin-top: 10px;
+    width: 100%;
+
     // background-image: url("https://img.freepik.com/free-vector/painted-background-multicoloured-palette_23-2148427592.jpg?w=2000");
     // background-position: -95px 0px;
+    .ion-segment {
+        width: 140px;
+        height: 95%;
+        position: absolute;
+        top: 1px;
+        left: 80vw;
+        border-radius: 15px;
+        border: 1px solid white;
+        ion-text {
+            color: rgb(255, 255, 255);
+            padding: 0 100px;
+            font-weight: 500;
+
+        }
+    }
     &__links {
         color: rgb(255, 255, 255);
         margin-left: 1vw;
         font-family: 'Poppins', sans-serif;
-        font-size: 30px;
+        font-size: 25px;
+        height: 100%;
         text-decoration: none;
+        border: 1px solid rgb(255, 255, 255);
+        padding: 8px 10px;
     }
 
     button {
         background: none;
         border: none;
-        color: red;
+        color: rgb(212, 3, 3);
         font-size: 30px;
         font-family: 'Poppins', sans-serif;
         border-radius: 5px;
@@ -29,13 +50,19 @@
     ion-menu {
         ion-content {
             ion-list {
-                background-color: rgb(253, 100, 100);
+                background-color: rgb(255, 100, 100);
+
                 ion-item {
                     .navbar__links {
                         font-size: 30px;
                         padding: 20px 0px;
                         display: flex;
                         color: rgb(0, 0, 0);
+                    }
+
+                    button {
+                        display: flex;
+                        padding: 20px 0px;
                     }
                 }
             }
@@ -59,6 +86,7 @@
             ion-button {
                 color: rgb(255, 255, 255);
             }
+
             ion-text {
                 font-size: 25px;
                 margin-left: 20px;
@@ -67,14 +95,17 @@
         }
     }
 }
+
 @media screen and (max-width: 767px) {
     .navbar {
         color: red;
         width: 100%;
         height: 100%;
         z-index: none;
+        margin-top: 0px;
     }
 }
+
 @media screen and (min-width: 768px) {
     .navbar {
         z-index: 1;

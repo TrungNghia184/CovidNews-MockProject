@@ -27,7 +27,8 @@ ion-header {
 }
 @media screen and (max-width: 767px) {
     .container {
-        bottom: -4.7%;
+        bottom: -6.5vh;
         height: 100%;
+        z-index: 0;
     }
 }
