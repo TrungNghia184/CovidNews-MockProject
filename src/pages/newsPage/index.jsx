@@ -56,27 +56,52 @@ export default function NewsPage() {
   }, [selectedLanguage]);
   return (
     <div className="newsContainer">
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          {mainNews.map((news, key) => {
-            return (
-              <div
-                class="swiper-slide"
-                key={key}
-                style={{ backgroundImage: `url(${news.urlToImage})` }}
-              >
-                <h3>{news.title}</h3>
-                <h4>{news?.source?.name}</h4>
-                <p>{news.description}</p>
-              </div>
-            );
-          })}
+      <h2>Breaking news</h2>
+      {window.screen.width < 1024 ? (
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {mainNews.map((news, key) => {
+              return (
+                <div
+                  class="swiper-slide"
+                  key={key}
+                  style={{ backgroundImage: `url(${news.urlToImage})` }}
+                >
+                  <h3>{news.title}</h3>
+                  <h4>{news?.source?.name}</h4>
+                </div>
+              );
+            })}
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-scrollbar"></div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-scrollbar"></div>
-      </div>
+      ) : (
+        <div class="main-news-container">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {mainNews.map((news, key) => {
+                return (
+                  <div class="swiper-slide" key={key}>
+                    <h3>{news.title}</h3>
+                    <img src={news?.urlToImage}></img>
+                    <h4>{news?.source?.name}</h4>
+                    <p>{news.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-scrollbar"></div>
+          </div>
+        </div>
+      )}
+
+      <h2>Related news</h2>
       <div class="related-news-container">
         {newsList.slice(5, newsList.length - 1).map((news, key) => {
           return (
