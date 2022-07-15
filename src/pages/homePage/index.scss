@@ -1,5 +1,40 @@
 #homePage {
     width: 100vw;
     height: 100vh;
-    background-color: red;
+    background-image: url('https://img.freepik.com/free-vector/abstract-watercolor-green-background_23-2149040581.jpg?w=2000');
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    margin-top: 6.8vh;
+    .totalNumber {
+        flex: 1 1 80%;
+        margin: 3vh 20px 0px 20px;
+        text-align: center;
+        h2 {
+            color: white;
+            font-size: 40px;
+        }
+        &__each {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            div {
+                flex: 1 1 30%
+            }
+        }
+    }
+    .countryNumber {
+        flex: 0 1 90%;
+        margin: 2vh auto 0px auto;
+    }
+    .totalChart {
+        flex: 1 1 50%;
+    }
+}
+#chartContainer {
+    margin: 100px 10%;
+    height: max-content;
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 80%;
 }
